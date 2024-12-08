@@ -3,13 +3,17 @@ name = "snyk_code_review_exercise"
 version = "1.0.0"
 description = "A web server that provides a basic HTTP api for querying the dependency tree of an npm package."
 authors = ["Snyk"]
+packages = [
+    { include = "packages" },
+    { include = "project" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 requests = "^2.26.0"
 node-semver = "^0.8.1"
 django = "^4.2.7"
-psycopg2 = "^2.9.9"
+psycopg2-binary = "2.9.9"
 djangorestframework = "^3.14.0"
 djangorestframework-recursive = "^0.1.2"
 
