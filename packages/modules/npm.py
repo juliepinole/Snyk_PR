@@ -1,5 +1,6 @@
 import requests
 import semver
+import logging
 
 from packages.models import VersionedPackage
 
@@ -12,6 +13,13 @@ def get_package(name: str, range: str) -> VersionedPackage:
     npm_package = requests.get(url).json()
     versions = list(npm_package["versions"].keys())
     version = semver.min_satisfying(versions, range)
+
+    # Find the matching version
+    version = semver.min_satisfying(versions, range)
+    if version is None:
+        logging.error(f"No matching version found for {name} with range {range} and versions list {versions}, while looking at the mock value of the {npm_package['name']} package")
+        return None  # TODO(pinolej): check what to return
+
     version_record = npm_package["versions"][version]
 
     package = VersionedPackage(
