@@ -1,0 +1,18 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore log files
+*.log
+
+# Ignore environment files
+.env
+
+# Ignore node_modules for JavaScript projects
+node_modules/
+
+# Ignore temporary files
+*.tmp
+*.swp
+.DS_Store
+
